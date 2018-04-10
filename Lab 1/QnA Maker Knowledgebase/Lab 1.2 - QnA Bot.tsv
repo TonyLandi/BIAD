@@ -1,0 +1,7 @@
+﻿Question	Answer	Source
+hi	;hello there, I am BIAD bot.;;	Editorial
+hello	;hello there, I am BIAD bot.;;	Editorial
+what can you do	;I can tell jokes and play trivia.  Just ask me to "tell a joke" or "play trivia" to get started.;;	Editorial
+help	;I can see you are lost.  Just ask me to "tell a joke" or "play trivia" to get started.;;	Editorial
+cancel	;Okay, just ask me to "tell a joke" or "play trivia" to get started.;;	Editorial
+What is Bot Framework?	Bot Framework;Bot Framework is a set of tools, services, connectors and Bot Builder SDKs.  Developers can get started in seconds with out-of-the-box templates for scenarios including basic, form, language understanding, Q&A, and proactive bots.;https://dev.botframework.com/;https://dev.botframework.com/Client/Images/ChatBot-BotFramework.png	Editorial

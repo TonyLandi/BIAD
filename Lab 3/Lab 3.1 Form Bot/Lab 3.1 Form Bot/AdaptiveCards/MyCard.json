@@ -1,0 +1,155 @@
+﻿{
+	"$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+	"type": "AdaptiveCard",
+	"version": "1.0",
+	"body": [
+		{
+			"type": "Container",
+			"items": [
+				{
+					"type": "TextBlock",
+					"text": "BIAD Bot",
+					"weight": "bolder",
+					"size": "large"
+				},
+				{
+					"type": "ColumnSet",
+					"columns": [
+						{
+							"type": "Column",
+							"width": "auto",
+							"items": [
+								{
+									"type": "Image",
+									"url": "https://www.microsoftevents.com/accounts/register123/microsoft/msft-v1/c-and-e/events/mtc-155940/eventfiles/image.png",
+									"size": "small",
+									"style": "person"
+								}
+							]
+						},
+						{
+							"type": "Column",
+							"width": "stretch",
+							"items": [
+								{
+									"type": "TextBlock",
+									"text": "Hello there!",
+									"weight": "bolder",
+									"size": "medium",
+									"wrap": true
+								},
+								{
+									"type": "TextBlock",
+									"spacing": "none",
+									"text": "",
+									"isSubtle": true,
+									"wrap": true
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"type": "Container",
+			"items": [
+				{
+					"type": "TextBlock",
+					"text": "Thanks for stopping by!  I've got jokes and I've got smarts.  Select and option below to get started, or type \"start over\" at any time to select a new option.",
+					"wrap": true
+				},
+				{
+					"type": "FactSet",
+					"facts": [
+						{
+							"title": "",
+							"value": ""
+						},
+						{
+							"title": "",
+							"value": ""
+						},
+						{
+							"title": "",
+							"value": ""
+						},
+						{
+							"title": "",
+							"value": ""
+						}
+					]
+				}
+			]
+		}
+	],
+	"actions": [
+		{
+			"type": "Action.Submit",
+			"title": "Tell me jokes",
+			"data": {
+				"action": "jokes"
+			},
+			"card": {
+				"type": "AdaptiveCard",
+				"body": [
+					{
+						"type": "Input.Text",
+						"id": "tellJoke",
+						"title": "Tell me jokes"
+					}
+				],
+				"actions": [
+					{
+						"type": "Action.Submit",
+						"title": "OK"
+					}
+				]
+			}
+		},
+		{
+			"type": "Action.Submit",
+			"title": "Tell me trivia",
+			"data": {
+				"action": "trivia"
+			},
+			"card": {
+				"type": "AdaptiveCard",
+				"body": [
+					{
+						"type": "Input.Text",
+						"id": "tellTrivia",
+						"title": "Tell me trivia"
+					}
+				],
+				"actions": [
+					{
+						"type": "Action.Submit",
+						"title": "Play Trivia"
+					}
+				]
+			}
+		},
+		{
+			"type": "Action.Submit",
+			"title": "None of these",
+			"card": {
+				"type": "AdaptiveCard",
+				"body": [
+					{
+						"type": "Input.Text",
+						"id": "doNothing",
+						"title": "None of these"
+					}
+				],
+				"actions": [
+					{
+						"type": "Action.Submit",
+						"title": "OK"
+					}
+				]
+
+			}
+		}
+	]
+}
