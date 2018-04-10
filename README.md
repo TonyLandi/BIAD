@@ -1,1 +1,2 @@
-# BIAD
+# Bot in a Day Workshop
+Microsoft’s Bot in a Day workshop will give developers training on the basics of building and understanding AI-powered bot technology. Attendees will receive an introduction to bots, followed by an afternoon of hands-on exercises conducted by a team of experts.
