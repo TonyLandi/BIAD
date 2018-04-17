@@ -3,9 +3,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Connector;
-using Lab_2_Dialogs_Bot.Dialogs;
 
-namespace Lab_2_Dialogs_Bot.Dialogs
+namespace EchoBot.Dialogs
 {
     [Serializable]
     public class RootDialog : IDialog<object>
@@ -36,11 +35,6 @@ namespace Lab_2_Dialogs_Bot.Dialogs
             }
         }
 
-        private async Task AfterJokeOrTrivia(IDialogContext context, IAwaitable<string> result)
-        {
-            context.Wait(MessageReceivedAsync);
-        }
-
         private async Task AfterQnA(IDialogContext context, IAwaitable<object> result)
         {
             IMessageActivity message = null;
@@ -59,20 +53,11 @@ namespace Lab_2_Dialogs_Bot.Dialogs
             }
 
             // If the message summary - NOT_FOUND, then it's time to echo
-            if (message.Summary == QnaDialog.NOT_FOUND)
+            if (message.Summary == QnaDialog.NotFound)
             {
-                if (message.Text.ToLowerInvariant().Contains("trivia"))
-                {
-                    // Since we are not needing to pass any message to start trivia, we can use call instead of forward
-                    context.Call(new TriviaDialog(), AfterJokeOrTrivia);
-                }
-                else
-                {
-                    // Otherwise, echo...
-                    await context.PostAsync($"You said: \"{message.Text}\"");
-                    // Wait for the next message
-                    context.Wait(MessageReceivedAsync);
-                }
+                await context.PostAsync($"You said: \"{message.Text}\"");
+                // Wait for the next message
+                context.Wait(MessageReceivedAsync);
             }
             else
             {
