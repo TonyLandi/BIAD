@@ -1,4 +1,4 @@
-{
+﻿{
 	"$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
 	"type": "AdaptiveCard",
 	"version": "1.0",
@@ -27,26 +27,26 @@
 								}
 							]
 						},
-						{
-							"type": "Column",
-							"width": "stretch",
-							"items": [
-								{
-									"type": "TextBlock",
-									"text": "Hello there!",
-									"weight": "bolder",
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Hello there!",
+                                    "weight": "bolder",
                                     "size": "medium",
-									"wrap": true
-								},
-								{
-									"type": "TextBlock",
-									"spacing": "none",
-									"text": "",
-									"isSubtle": true,
-									"wrap": true
-								}
-							]
-						}
+                                    "wrap": true
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "spacing": "none",
+                                    "text": "",
+                                    "isSubtle": true,
+                                    "wrap": true
+                                }
+                            ]
+                        }
 					]
 				}
 			]
@@ -86,7 +86,10 @@
 	"actions": [
 		{
 			"type": "Action.Submit",
-			"title": "Tell me jokes",
+      "title": "Tell me jokes",
+      "data": {
+        "action":  "jokes"
+      },
 			"card": {
 				"type": "AdaptiveCard",
 				"body": [
@@ -104,46 +107,49 @@
 				]
 			}
 		},
-		{
-			"type": "Action.Submit",
-			"title": "Tell me trivia",
-			"card": {
-				"type": "AdaptiveCard",
-				"body": [
-					{
-						"type": "Input.Text",
-						"id": "tellTrivia",
-						"title": "Tell me trivia"
-					}
-				],
-				"actions": [
-					{
-						"type": "Action.Submit",
-						"title": "OK"
-					}
-				]
-			}
-		},
-		{
-			"type": "Action.Submit",
-			"title": "None of these",
-			"card": {
-                "type": "AdaptiveCard",
-                "body": [
-                    {
-                        "type": "Input.Text",
-                        "id": "doNothing",
-                        "title": "None of these"
-                    }
-                ],
-                "actions": [
-                    {
-                        "type": "Action.Submit",
-                        "title": "OK"
-                    }
-                ]
+    {
+      "type": "Action.Submit",
+      "title": "Tell me trivia",
+      "data": {
+        "action": "trivia"
+      },
+      "card": {
+        "type": "AdaptiveCard",
+        "body": [
+          {
+            "type": "Input.Text",
+            "id": "tellTrivia",
+            "title": "Tell me trivia"
+          }
+        ],
+        "actions": [
+          {
+            "type": "Action.Submit",
+            "title": "Play Trivia"
+          }
+        ]
+      }
+    },
+    {
+      "type": "Action.Submit",
+      "title": "None of these",
+      "card": {
+        "type": "AdaptiveCard",
+        "body": [
+          {
+            "type": "Input.Text",
+            "id": "doNothing",
+            "title": "None of these"
+          }
+        ],
+        "actions": [
+          {
+            "type": "Action.Submit",
+            "title": "OK"
+          }
+        ]
 
-            }
-		}
+      }
+    }
 	]
 }
