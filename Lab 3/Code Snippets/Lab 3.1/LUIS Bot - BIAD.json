@@ -1,0 +1,135 @@
+{
+  "luis_schema_version": "2.2.0",
+  "versionId": "0.1",
+  "name": "LUIS Bot - BIAD",
+  "desc": "This bot will analyze the emotional sentiment of the user satisfaction.",
+  "culture": "en-us",
+  "intents": [
+    {
+      "name": "Negative"
+    },
+    {
+      "name": "Neutral"
+    },
+    {
+      "name": "None"
+    },
+    {
+      "name": "Positive"
+    }
+  ],
+  "entities": [],
+  "composites": [],
+  "closedLists": [],
+  "regex_entities": [],
+  "bing_entities": [],
+  "model_features": [],
+  "regex_features": [],
+  "utterances": [
+    {
+      "text": "i already knew that",
+      "intent": "Neutral",
+      "entities": []
+    },
+    {
+      "text": "i am dissatisfied",
+      "intent": "Negative",
+      "entities": []
+    },
+    {
+      "text": "i am happy",
+      "intent": "Positive",
+      "entities": []
+    },
+    {
+      "text": "i am indifferent",
+      "intent": "Neutral",
+      "entities": []
+    },
+    {
+      "text": "i am sad",
+      "intent": "Negative",
+      "entities": []
+    },
+    {
+      "text": "i am satisfied",
+      "intent": "Positive",
+      "entities": []
+    },
+    {
+      "text": "i am undecided",
+      "intent": "Neutral",
+      "entities": []
+    },
+    {
+      "text": "i am unhappy",
+      "intent": "Negative",
+      "entities": []
+    },
+    {
+      "text": "i am unimpressed",
+      "intent": "Negative",
+      "entities": []
+    },
+    {
+      "text": "i did not learn anything",
+      "intent": "Negative",
+      "entities": []
+    },
+    {
+      "text": "i enjoyed it",
+      "intent": "Positive",
+      "entities": []
+    },
+    {
+      "text": "i learned something",
+      "intent": "Positive",
+      "entities": []
+    },
+    {
+      "text": "i like it",
+      "intent": "Positive",
+      "entities": []
+    },
+    {
+      "text": "i liked it a lot",
+      "intent": "Positive",
+      "entities": []
+    },
+    {
+      "text": "it was alright",
+      "intent": "Neutral",
+      "entities": []
+    },
+    {
+      "text": "it was entertaining",
+      "intent": "Positive",
+      "entities": []
+    },
+    {
+      "text": "it was fine",
+      "intent": "Neutral",
+      "entities": []
+    },
+    {
+      "text": "it was fun",
+      "intent": "Positive",
+      "entities": []
+    },
+    {
+      "text": "it was interesting",
+      "intent": "Positive",
+      "entities": []
+    },
+    {
+      "text": "it was okay",
+      "intent": "Neutral",
+      "entities": []
+    },
+    {
+      "text": "this was a waste of time",
+      "intent": "Negative",
+      "entities": []
+    }
+  ]
+}
