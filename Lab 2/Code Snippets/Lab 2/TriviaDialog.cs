@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Connector;
 
-namespace EchoBot.Dialogs
+namespace LabBot.Dialogs
 {
     [Serializable]
     public class TriviaDialog : IDialog<string>

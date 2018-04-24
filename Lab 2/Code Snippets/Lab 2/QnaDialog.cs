@@ -8,7 +8,7 @@ using Microsoft.Bot.Connector;
 using QnAMakerDialog;
 using QnAMakerDialog.Models;
 
-namespace EchoBot.Dialogs
+namespace LabBot.Dialogs
 {
     /// <summary>
     /// Make sure you go to "Manage Nuget Packages" and add QnAMakerDialog by Garry Pretty for this code to work
