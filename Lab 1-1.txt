@@ -12,6 +12,9 @@ Add these to Web.Config
 <add key="QnaKnowledgebaseId" value="0a2a1836-fe02-4a6a-bbee-7a89c3cbc433" />
 <add key="QnaSubscriptionKey" value="009ada8888e2494ba3ca8a8d5abf949c" />
 
+For lab 1.2 use this Key instead
+<add key="QnaKnowledgebaseId" value="a9fee3be-299d-4336-b710-2a5b1c5e26ca" />
+
 ---------------------------------------------------------------------------------------------------------------------
 Replace all code in QnaDialog.cs
 ---------------------------------------------------------------------------------------------------------------------
