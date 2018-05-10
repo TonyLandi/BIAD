@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("QnA_Bot")]
+[assembly: AssemblyTitle("LabBob")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("QnA_Bot")]
+[assembly: AssemblyProduct("LabBob")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("72b3246c-60db-4a16-9236-b796ff43ae9a")]
+[assembly: Guid("0fc1e2f5-0da4-4ccd-ba46-a0f66e1d8031")]
 
 // Version information for an assembly consists of the following four values:
 //

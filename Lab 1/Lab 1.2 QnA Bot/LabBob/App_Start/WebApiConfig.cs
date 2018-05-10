@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 
-namespace QnA_Bot
+namespace LabBob
 {
     public static class WebApiConfig
     {

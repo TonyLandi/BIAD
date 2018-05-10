@@ -5,7 +5,7 @@ using System.Web.Http;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Connector;
 
-namespace QnA_Bot
+namespace LabBob
 {
     [BotAuthentication]
     public class MessagesController : ApiController
@@ -18,8 +18,8 @@ namespace QnA_Bot
         {
             if (activity.Type == ActivityTypes.Message)
             {
+                //await Conversation.SendAsync(activity, () => new Dialogs.RootDialog());
                 await Conversation.SendAsync(activity, () => new Dialogs.QnaDialog());
-                //  await Conversation.SendAsync(activity, () => new Dialogs.RootDialog());
             }
             else
             {
