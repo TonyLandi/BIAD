@@ -13,7 +13,7 @@ namespace LabBot
     [Serializable]
     public class SurveyForm
     {
-        [Prompt("Please enter your name {&}.")]
+        [Prompt("Please enter your {&}.")]
         public string Name;
 
         [Prompt("Please enter your {&}.")]
