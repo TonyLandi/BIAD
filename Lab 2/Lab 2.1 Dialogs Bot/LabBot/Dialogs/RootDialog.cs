@@ -5,7 +5,7 @@ using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Connector;
 using Newtonsoft.Json.Linq;
 
-namespace Lab_2_1_Dialogs_Bot.Dialogs
+namespace LabBot.Dialogs
 {
     [Serializable]
     public class RootDialog : IDialog<object>
@@ -24,28 +24,36 @@ namespace Lab_2_1_Dialogs_Bot.Dialogs
             {
                 if (activity.Value != null)
                 {
+
+                    // Try to parse the JSON value to a string where the token equals an "action"
                     JToken valueToken = JObject.Parse(activity.Value.ToString());
-                    string actionValue = valueToken.SelectToken("action") != null ? valueToken.SelectToken("action").ToString() : string.Empty;
+                    var actionValue = valueToken.SelectToken("action") != null
+                        ? valueToken.SelectToken("action").ToString()
+                        : string.Empty;
 
                     if (!string.IsNullOrEmpty(actionValue))
                     {
                         switch (valueToken.SelectToken("action").ToString())
                         {
+                            // If the user clicks "Tell me a joke" reply that you are still working on this feature
                             case "jokes":
                                 await context.PostAsync("Sorry, I'm learning new jokes. Come back later.");
                                 break;
+                            // If the user clicks the "Play Trivia" button, call the trivia dialog to start the game
                             case "trivia":
-                                context.Call(new TriviaDialog(), AfterTrivia);
+                                context.Call(new TriviaDialog(), AfterJokeOrTrivia);
                                 break;
+                            // If it was something else, tell the user that you don't know how to handle the action
                             default:
-                                await context.PostAsync($"I don't know how to handle the action \"{actionValue}\".");
+                                await context.PostAsync($"That does not compute. I am not programmed to \"{actionValue}\".");
                                 context.Wait(MessageReceivedAsync);
                                 break;
                         }
                     }
                     else
                     {
-                        await context.PostAsync("It looks like no \"data\" was defined for this.  Check your adaptive cards JSON definition.");
+                        // Tell the user that you are having problems with your JSON
+                        await context.PostAsync("It looks like no \"data\" was defined for this action.  Check your adaptive cards JSON definition.");
                         context.Wait(MessageReceivedAsync);
                     }
                 }
@@ -66,12 +74,6 @@ namespace Lab_2_1_Dialogs_Bot.Dialogs
             }
         }
 
-        private async Task AfterTrivia(IDialogContext context, IAwaitable<string> result)
-        {
-            await context.PostAsync("Thanks for playing!");
-            context.Wait(MessageReceivedAsync);
-        }
-
         private async Task AfterQnA(IDialogContext context, IAwaitable<object> result)
         {
             IMessageActivity message = null;
@@ -90,27 +92,32 @@ namespace Lab_2_1_Dialogs_Bot.Dialogs
             }
 
             // If the message summary - NOT_FOUND, then it's time to echo
-            if (message.Summary == QnaDialog.NOT_FOUND)
+            if (message.Summary == QnaDialog.NotFound)
             {
                 if (message.Text.ToLowerInvariant().Contains("trivia"))
                 {
                     // Since we are not needing to pass any message to start trivia, we can use call instead of forward
-                    context.Call(new TriviaDialog(), AfterTrivia);
+                    context.Call(new TriviaDialog(), AfterJokeOrTrivia);
                 }
                 else
                 {
                     // Otherwise, echo...
                     await context.PostAsync($"You said: \"{message.Text}\"");
-                    // Wait for the nest message
+                    // Wait for the next message
                     context.Wait(MessageReceivedAsync);
                 }
             }
             else
             {
-                // Display the answer from QnA Maker
+                // Display the answer from QnA Maker Service
                 await context.PostAsync(message);
                 context.Wait(MessageReceivedAsync);
             }
+        }
+
+        private async Task AfterJokeOrTrivia(IDialogContext context, IAwaitable<object> result)
+        {
+            context.Wait(MessageReceivedAsync);
         }
     }
 }

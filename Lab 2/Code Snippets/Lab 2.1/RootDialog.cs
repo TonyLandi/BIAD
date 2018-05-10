@@ -5,7 +5,7 @@ using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Connector;
 using Newtonsoft.Json.Linq;
 
-namespace Lab_2_1_Dialogs_Bot.Dialogs
+namespace LabBot.Dialogs
 {
     [Serializable]
     public class RootDialog : IDialog<object>
