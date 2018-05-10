@@ -1,0 +1,35 @@
+POST /knowledgebases/0a2a1836-fe02-4a6a-bbee-7a89c3cbc433/generateAnswer
+Host: https://westus.api.cognitive.microsoft.com/qnamaker/v2.0
+Ocp-Apim-Subscription-Key: 009ada8888e2494ba3ca8a8d5abf949c
+Content-Type: application/json
+{"question":"hi"}
+
+---------------------------------------------------------------------------------------------------------------------
+Add these to Web.Config
+---------------------------------------------------------------------------------------------------------------------
+
+<!-- QnA Maker Keys -->
+<add key="QnaKnowledgebaseId" value="0a2a1836-fe02-4a6a-bbee-7a89c3cbc433" />
+<add key="QnaSubscriptionKey" value="009ada8888e2494ba3ca8a8d5abf949c" />
+
+---------------------------------------------------------------------------------------------------------------------
+Replace all code in QnaDialog.cs
+---------------------------------------------------------------------------------------------------------------------
+
+using System;
+using System.Configuration;
+using Microsoft.Bot.Builder.CognitiveServices.QnAMaker;
+
+namespace LabBot.Dialogs
+{
+    [Serializable]
+    public class QnaDialog : QnAMakerDialog
+    {
+        public QnaDialog() : base(new
+            QnAMakerService(new QnAMakerAttribute(ConfigurationManager.AppSettings["QnaSubscriptionKey"],
+                ConfigurationManager.AppSettings["QnaKnowledgebaseId"],
+                "Sorry, I couldn't find an answer for that", 0.5)))
+        {
+        }
+    }
+}
