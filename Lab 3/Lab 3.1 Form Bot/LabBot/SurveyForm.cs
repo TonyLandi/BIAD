@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.Bot.Builder.FormFlow;
 
-namespace Lab_3_1_Form_Bot
+namespace LabBot
 {
     public enum DepartmentOptions
     {
@@ -11,9 +11,9 @@ namespace Lab_3_1_Form_Bot
     }
 
     [Serializable]
-    public class SurveyDialog
+    public class SurveyForm
     {
-        [Prompt("Please enter your name {&}.")]
+        [Prompt("Please enter your {&}.")]
         public string Name;
 
         [Prompt("Please enter your {&}.")]
@@ -26,9 +26,9 @@ namespace Lab_3_1_Form_Bot
         [Prompt("What {&} do you work in? {||}.")]
         public DepartmentOptions? Department;
 
-        public static IForm<SurveyDialog> BuildForm()
+        public static IForm<SurveyForm> BuildForm()
         {
-            return new FormBuilder<SurveyDialog>().Build();
+            return new FormBuilder<SurveyForm>().Build();
         }
     }
 }

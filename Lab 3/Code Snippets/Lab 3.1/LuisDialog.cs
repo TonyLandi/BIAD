@@ -6,7 +6,7 @@ using Microsoft.Bot.Builder.Luis;
 using Microsoft.Bot.Builder.Luis.Models;
 using System.Configuration;
 
-namespace EchoBot.Dialogs
+namespace LabBot.Dialogs
 {
     [Serializable]
     public class LuisDialog : LuisDialog<string> // explicitly state we will return a string using context.done(string)

@@ -6,13 +6,13 @@ using Microsoft.Bot.Builder.Luis;
 using Microsoft.Bot.Builder.Luis.Models;
 using System.Configuration;
 
-namespace Lab_3_1_Form_Bot.Dialogs
+namespace LabBot.Dialogs
 {
     [Serializable]
-    public class LuisAnswers : LuisDialog<string> // explicitly state we will return a string using context.done(string)
+    public class LuisDialog : LuisDialog<string> // explicitly state we will return a string using context.done(string)
     {
 
-        public LuisAnswers() : base(SetupLuisService())
+        public LuisDialog() : base(SetupLuisService())
         {
 
         }
@@ -31,19 +31,20 @@ namespace Lab_3_1_Form_Bot.Dialogs
         {
             return base.MessageReceived(context, item);
         }
+
         /// <summary>
         ///     Setup any values of the LuisModelAttribute that you cannot set in the constructor
         /// </summary>
         /// <returns>The LuisService to use in the base constructor of this LuisDialog</returns>
         public static LuisService SetupLuisService()
         {
-            LuisModelAttribute attribute = new LuisModelAttribute(
+            var attribute = new LuisModelAttribute(
                 ConfigurationManager.AppSettings["LuisAppId"],
                 ConfigurationManager.AppSettings["LuisAPIKey"],
-                domain: ConfigurationManager.AppSettings["LuisAPIHostName"]);
-#if DEBUG
-            attribute.Staging = true;
-#endif
+                domain: ConfigurationManager.AppSettings["LuisAPIHostName"])
+            {
+                Staging = true
+            };
             return new LuisService(attribute);
         }
 

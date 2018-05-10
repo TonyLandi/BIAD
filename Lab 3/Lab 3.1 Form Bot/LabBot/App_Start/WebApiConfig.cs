@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 
-namespace Lab_3_1_Form_Bot
+namespace LabBob
 {
     public static class WebApiConfig
     {

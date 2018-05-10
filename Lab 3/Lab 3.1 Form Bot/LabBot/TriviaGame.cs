@@ -1,39 +1,47 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
-namespace Lab_3_1_Form_Bot
+namespace LabBot
 {
+    [Serializable]
+    public class TriviaQuestion
+    {
+        public int Index { get; set; }
+        public int Answer { get; set; }
+        public string Question { get; set; }
+        public string[] Choices { get; set; }
+    }
+
     [Serializable]
     public class TriviaGame
     {
         private string _playersName;
-        private int _currentQuestion = 0;
-        private int[] _usersAnswers = new int[] { -1, -1, -1 };
+        private int _currentQuestion;
+        private readonly int[] _usersAnswers = { -1, -1, -1 };
 
-        public List<TriviaQuestion> _questions = new List<TriviaQuestion>
+        public List<TriviaQuestion> Questions = new List<TriviaQuestion>
         {
-            new TriviaQuestion()
+            new TriviaQuestion
             {
                 Index = 0,
                 Answer = 3,
                 Question = "How many pieces of contemporary art is in Microsoft's collection?",
-                Choices = new string[] { "0", "1000", "3000", "5000", "10000"}
+                Choices = new[] { "0", "1000", "3000", "5000", "10000"}
             },
-            new TriviaQuestion()
+            new TriviaQuestion
             {
                 Index = 1,
                 Answer = 2,
                 Question = "In 2016, Microsoft made a major breakthrough, equaling that of humans, in what?",
-                Choices = new string[] {"Writing Song Lyrics", "Derby Car Racing", "Speech Recognition", "Predicting American Idol Winners"}
+                Choices = new[] {"Writing Song Lyrics", "Derby Car Racing", "Speech Recognition", "Predicting American Idol Winners"}
             },
-            new TriviaQuestion()
+            new TriviaQuestion
             {
                 Index = 2,
                 Answer = 1,
                 Question = "Approximately how much money does Microsoft spend on R&D?",
-                Choices = new string[] {"$111 billion","$11 billion","$1 billion","$1 dollar"}
+                Choices = new[] {"$111 billion","$11 billion","$1 billion","$1 dollar"}
             }
         };
 
@@ -44,21 +52,19 @@ namespace Lab_3_1_Form_Bot
 
         public TriviaQuestion CurrentQuestion()
         {
-            return _questions.Where(q => q.Index == _currentQuestion).FirstOrDefault();
+            return Questions.FirstOrDefault(q => q.Index == _currentQuestion);
         }
 
         public TriviaQuestion MoveToNextQuestion()
         {
             _currentQuestion++;
-            if (_currentQuestion < _questions.Count())
+            if (_currentQuestion < Questions.Count())
             {
                 return CurrentQuestion();
             }
-            else
-            {
-                _currentQuestion--;
-                return null;
-            }
+
+            _currentQuestion--;
+            return null;
         }
         public TriviaQuestion MoveToPreviousQuestion()
         {
@@ -67,11 +73,9 @@ namespace Lab_3_1_Form_Bot
             {
                 return CurrentQuestion();
             }
-            else
-            {
-                _currentQuestion = 0;
-                return null;
-            }
+
+            _currentQuestion = 0;
+            return null;
         }
         public TriviaQuestion MoveToFirstQuestion()
         {
@@ -81,22 +85,14 @@ namespace Lab_3_1_Form_Bot
         public bool Answer(int answer)
         {
             _usersAnswers[_currentQuestion] = answer;
-            return _usersAnswers[_currentQuestion] == _questions[_currentQuestion].Answer;
+            return _usersAnswers[_currentQuestion] == Questions[_currentQuestion].Answer;
         }
         public int Score()
         {
-            return _questions.Where(q => _usersAnswers[q.Index] == q.Answer).Count();
+            return Questions.Count(q => _usersAnswers[q.Index] == q.Answer);
         }
 
 
     }
 
-    [Serializable]
-    public class TriviaQuestion
-    {
-        public int Index { get; set; }
-        public int Answer { get; set; }
-        public string Question { get; set; }
-        public string[] Choices { get; set; }
-    }
 }

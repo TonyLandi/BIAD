@@ -4,7 +4,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Lab_3_1_Form_Bot.Dialogs
+namespace LabBot.Dialogs
 {
     [Serializable]
     public class AskLuis : IDialog<object>
@@ -18,7 +18,7 @@ namespace Lab_3_1_Form_Bot.Dialogs
         {
             IMessageActivity activity = (IMessageActivity)await result;
             // just forward straight to LUIS
-            await context.Forward(new LuisAnswers(), AfterLuis, activity, CancellationToken.None);
+            await context.Forward(new LuisDialog(), AfterLuis, activity, CancellationToken.None);
         }
 
 
